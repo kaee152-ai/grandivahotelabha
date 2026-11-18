@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فندق جرانديفا أبها | Grandiva Hotel Abha</title>
+    <!-- استيراد خط تجول العربي الفاخر -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- مكتبة أيقونات Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDark: '#162925',
+                        emeraldDeep: '#0E1C19',
+                        royalGold: '#C5A059',
+                        royalGoldHover: '#B08D48',
+                        warmIvory: '#FAF8F5',
+                        ivoryCard: '#FFFFFF',
+                        textMain: '#1E2422',
+                        textMuted: '#64706C'
+                    },
+                    fontFamily: {
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #FAF8F5;
+            color: #1E2422;
+            overflow-x: hidden;
+        }
+
+        /* تأثيرات الأنميشن عند التمرير (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* تأثير تكبير بطيء للخلفية الرئيسية */
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+        .hero-bg-animate {
+            animation: slowZoom 22s ease-in-out infinite alternate;
+        }
+
+        /* تأثير نبض زر الواتساب */
+        @keyframes pulseGold {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-pulse {
+            animation: pulseGold 2.5s infinite;
+        }
+
+        /* شريط التمرير المخصص */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #162925;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-royalGold selection:text-white">
+
+    <!-- القائمة العلوية (Navbar) -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 px-6 md:px-12 lg:px-20 bg-emeraldDark/90 backdrop-blur-md border-b border-royalGold/20">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- الشعار -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl border-2 border-royalGold flex items-center justify-center bg-emeraldDeep group-hover:bg-royalGold transition-colors duration-300">
+                    <span class="text-royalGold group-hover:text-emeraldDeep font-extrabold text-xl transition-colors">G</span>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-white tracking-wide leading-none">جرانديفا <span class="text-royalGold">أبها</span></h1>
+                    <span class="text-[11px] text-royalGold/80 tracking-[0.2em] uppercase block mt-1">GRANDIVA HOTEL</span>
+                </div>
+            </a>
+
+            <!-- روابط التنقل لسطح المكتب -->
+            <nav class="hidden lg:flex items-center gap-8 text-white/90 font-medium text-sm">
+                <a href="#home" class="hover:text-royalGold transition-colors">الرئيسية</a>
+                <a href="#about" class="hover:text-royalGold transition-colors">عن الفندق</a>
+                <a href="#rooms" class="hover:text-royalGold transition-colors">الغرف والأجنحة</a>
+                <a href="#dining" class="hover:text-royalGold transition-colors">المطعم واللاونج</a>
+                <a href="#facilities" class="hover:text-royalGold transition-colors">المرافق والسبا</a>
+                <a href="#reviews" class="hover:text-royalGold transition-colors">آراء النزلاء</a>
+                <a href="#contact" class="hover:text-royalGold transition-colors">الموقع والتواصل</a>
+            </nav>
+
+            <!-- أزرار الإجراءات -->
+            <div class="flex items-center gap-3">
+                <a href="#booking" class="bg-royalGold hover:bg-royalGoldHover text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-lg shadow-royalGold/20 transition-all duration-300 hover:-translate-y-0.5">
+                    احجز الآن
+                </a>
+                <!-- زر القائمة للجوال -->
+                <button id="mobile-menu-btn" aria-label="القائمة" class="lg:hidden text-white p-2 rounded-xl border border-white/15 hover:border-royalGold">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- القائمة المنسدلة للجوال -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-white/10 flex flex-col gap-3 text-white text-center pb-3">
+            <a href="#home" class="py-2 hover:text-royalGold mobile-link">الرئيسية</a>
+            <a href="#about" class="py-2 hover:text-royalGold mobile-link">عن الفندق</a>
+            <a href="#rooms" class="py-2 hover:text-royalGold mobile-link">الغرف والأجنحة</a>
+            <a href="#dining" class="py-2 hover:text-royalGold mobile-link">المطعم واللاونج</a>
+            <a href="#facilities" class="py-2 hover:text-royalGold mobile-link">المرافق والسبا</a>
+            <a href="#reviews" class="py-2 hover:text-royalGold mobile-link">آراء النزلاء</a>
+            <a href="#contact" class="py-2 hover:text-royalGold mobile-link">الموقع والتواصل</a>
+        </div>
+    </header>
+
+    <!-- 1. القسم الرئيسي (Hero Section) -->
+    <section id="home" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden pt-20">
+        <!-- صورة خلفية عالية الجودة مع حركة بطيئة -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=85" 
+                 onerror="this.src='https://placehold.co/1920x1080/162925/C5A059?text=Grandiva+Hotel+Abha'"
+                 alt="فندق جرانديفا أبها" 
+                 class="w-full h-full object-cover hero-bg-animate">
+            <div class="absolute inset-0 bg-gradient-to-b from-emeraldDeep/80 via-emeraldDark/70 to-emeraldDeep/90"></div>
+        </div>
+
+        <!-- محتوى الهيرو -->
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-royalGold/40 text-royalGold text-xs md:text-sm font-bold mb-6 reveal active">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>عنوان الفخامة والضيافة الأصيلة في عروس الجبل</span>
+            </div>
+
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-6 reveal active delay-100">
+                ارتقِ بتجربة إقامتك في <br>
+                <span class="text-royalGold">فندق جرانديفا أبها</span>
+            </h2>
+
+            <p class="text-base md:text-xl text-white/85 max-w-2xl mx-auto mb-10 leading-relaxed reveal active delay-200">
+                حيث تلتقي الأناقة المعمارية العصرية مع نسائم أبها العليلة، لنمنحك إقامة استثنائية صُممت بعناية فائقة لتلبية تطلعاتك.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4 reveal active delay-300">
+                <a href="#rooms" class="bg-royalGold hover:bg-royalGoldHover text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-royalGold/25 transition-all duration-300 hover:-translate-y-1 flex items-center gap-2">
+                    <span>استكشف الغرف والأجنحة</span>
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </a>
+                <a href="#about" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/25 font-bold px-8 py-4 rounded-xl transition-all duration-300">
+                    تعرف على خدماتنا
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- شريط الحجز السريع التفاعلي (Booking Bar) -->
+    <section id="booking" class="relative z-20 px-4 sm:px-8 -mt-16">
+        <div class="max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl shadow-emeraldDark/15 border border-royalGold/20 p-6 md:p-8 reveal">
+            <form id="quick-booking-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+                <div>
+                    <label class="block text-xs font-bold text-textMuted mb-2">تاريخ الوصول</label>
+                    <div class="relative">
+                        <input type="date" id="checkin-date" required class="w-full bg-warmIvory border border-gray-200 focus:border-royalGold rounded-xl px-4 py-3 text-sm font-medium outline-none transition-colors">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-textMuted mb-2">تاريخ المغادرة</label>
+                    <div class="relative">
+                        <input type="date" id="checkout-date" required class="w-full bg-warmIvory border border-gray-200 focus:border-royalGold rounded-xl px-4 py-3 text-sm font-medium outline-none transition-colors">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-textMuted mb-2">نوع الغرفة / الجناح</label>
+                    <select id="room-type-select" class="w-full bg-warmIvory border border-gray-200 focus:border-royalGold rounded-xl px-4 py-3 text-sm font-medium outline-none transition-colors">
+                        <option value="غرفة ديلوكس كينج">غرفة ديلوكس كينج</option>
+                        <option value="غرفة تنفيذية مزدوجة">غرفة تنفيذية مزدوجة</option>
+                        <option value="جناح جرانديفا جونيور">جناح جرانديفا جونيور</option>
+                        <option value="الجناح الملكي البانورامي">الجناح الملكي البانورامي</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-textMuted mb-2">عدد النزلاء</label>
+                    <select id="guests-select" class="w-full bg-warmIvory border border-gray-200 focus:border-royalGold rounded-xl px-4 py-3 text-sm font-medium outline-none transition-colors">
+                        <option value="شخص واحد">شخص واحد</option>
+                        <option value="شخصان" selected>شخصان (بالغين)</option>
+                        <option value="عائلة (2 بالغين + طفلين)">عائلة (2 بالغين + طفلين)</option>
+                        <option value="4 بالغين">4 بالغين</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-emeraldDark hover:bg-emeraldDeep text-royalGold border border-royalGold/40 font-bold py-3.5 px-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-royalGold/20 flex items-center justify-center gap-2 cursor-pointer">
+                        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                        <span>تحقق واحجز الآن</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- 2. قسم عن الفندق ولماذا جرانديفا (About Section) -->
+    <section id="about" class="py-20 md:py-28 px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- الصور المتداخلة -->
+            <div class="lg:col-span-6 relative reveal-right">
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=80" 
+                         onerror="this.src='https://placehold.co/800x600/162925/C5A059?text=Grandiva+Lobby'"
+                         alt="بهو فندق جرانديفا أبها" 
+                         class="w-full h-[420px] object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <!-- بطاقة إحصائية عائمة -->
+                <div class="bg-emeraldDark text-white p-6 rounded-2xl shadow-xl border border-royalGold/30 max-w-[240px] -mt-16 mr-6 relative z-10">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-3xl font-black text-royalGold">+98%</span>
+                        <i data-lucide="award" class="w-7 h-7 text-royalGold"></i>
+                    </div>
+                    <p class="text-xs text-white/80 leading-relaxed">نسبة رضا نزلائنا عن جودة الضيافة والهدوء والموقع الاستراتيجي في أبها.</p>
+                </div>
+            </div>
+
+            <!-- النصوص والمميزات -->
+            <div class="lg:col-span-6 reveal-left">
+                <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">مرحباً بكم في جرانديفا</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-emeraldDark leading-snug mb-6">
+                    توازن مثالي بين الفخامة العصرية وكرم الضيافة العسيرية
+                </h2>
+                <p class="text-textMuted leading-relaxed mb-8 text-base">
+                    يقع فندق جرانديفا في موقع حيوي بمدينة أبها، ليكون وجهتك المثالية سواء كنت في رحلة استجمام عائلية أو زيارة عمل. صُممت كافة مرافقنا بعناية فائقة لتمنحك شعوراً بالسكينة والخصوصية مع خدمات فندقية على مدار الساعة.
+                </p>
+
+                <!-- شبكة المزايا -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+                    <div class="flex items-start gap-3.5 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDark/5 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">موقع استراتيجي</h4>
+                            <p class="text-xs text-textMuted mt-1">قريب من أبرز المعالم السياحية والمنتزهات في أبها.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3.5 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDark/5 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="wifi" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">إنترنت فائق السرعة</h4>
+                            <p class="text-xs text-textMuted mt-1">تغطية Wi-Fi مجانية في جميع الغرف والمرافق.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3.5 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDark/5 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="concierge-bell" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">خدمة غرف 24/7</h4>
+                            <p class="text-xs text-textMuted mt-1">فريق ضيافة محترف جاهز لخدمتك في أي وقت.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3.5 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDark/5 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="car" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">مواقف سيارات خاصة</h4>
+                            <p class="text-xs text-textMuted mt-1">مواقف آمنة ومجانية ومراقبة بالكاميرات للنزلاء.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. قسم الغرف والأجنحة الفاخرة (Rooms & Suites) -->
+    <section id="rooms" class="py-20 bg-emeraldDark text-white px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+            <!-- رأس القسم مع أزرار الفلترة -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-14 gap-6 reveal">
+                <div class="text-center md:text-right">
+                    <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">إقامة استثنائية</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold">الغرف والأجنحة الفاخرة</h2>
+                </div>
+
+                <!-- أزرار تصفية الغرف -->
+                <div class="flex flex-wrap justify-center gap-2 bg-emeraldDeep p-1.5 rounded-2xl border border-white/10">
+                    <button onclick="filterRooms('all')" class="room-filter-btn active bg-royalGold text-white px-5 py-2 rounded-xl text-sm font-bold transition-all cursor-pointer">الكل</button>
+                    <button onclick="filterRooms('room')" class="room-filter-btn text-white/75 hover:text-white px-5 py-2 rounded-xl text-sm font-bold transition-all cursor-pointer">غرف فاخرة</button>
+                    <button onclick="filterRooms('suite')" class="room-filter-btn text-white/75 hover:text-white px-5 py-2 rounded-xl text-sm font-bold transition-all cursor-pointer">أجنحة ملكية وتنفيذية</button>
+                </div>
+            </div>
+
+            <!-- شبكة بطاقات الغرف -->
+            <div id="rooms-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- بطاقة 1: غرفة ديلوكس -->
+                <div class="room-item bg-emeraldDeep rounded-3xl overflow-hidden border border-white/10 hover:border-royalGold/50 transition-all duration-500 group reveal" data-category="room">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x600/0E1C19/C5A059?text=Deluxe+Room'"
+                             alt="غرفة ديلوكس كينج" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-emeraldDark/85 backdrop-blur-md text-royalGold text-xs font-bold px-3.5 py-1.5 rounded-full border border-royalGold/30">
+                            مساحة 35 م²
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-royalGold transition-colors">غرفة ديلوكس كينج</h3>
+                        <p class="text-white/70 text-sm mb-5 leading-relaxed">
+                            سرير ملكي فاخر، إضاءة دافئة، ركن قهوة متكامل، وحمام رخامي عصري يمنحك أقصى درجات الاسترخاء.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-white/60 mb-6 pb-5 border-b border-white/10">
+                            <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4 text-royalGold"></i> 2 نزلاء</span>
+                            <span class="flex items-center gap-1"><i data-lucide="bed" class="w-4 h-4 text-royalGold"></i> سرير كينج</span>
+                            <span class="flex items-center gap-1"><i data-lucide="tv" class="w-4 h-4 text-royalGold"></i> شاشة 55 بوصة</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-extrabold text-royalGold">450</span>
+                                <span class="text-xs text-white/70">ر.س / ليلة</span>
+                            </div>
+                            <button onclick="selectRoomForBooking('غرفة ديلوكس كينج')" class="bg-royalGold hover:bg-royalGoldHover text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all cursor-pointer">
+                                احجز الغرفة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة 2: جناح جرانديفا جونيور -->
+                <div class="room-item bg-emeraldDeep rounded-3xl overflow-hidden border border-white/10 hover:border-royalGold/50 transition-all duration-500 group reveal delay-100" data-category="suite">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x600/0E1C19/C5A059?text=Junior+Suite'"
+                             alt="جناح جرانديفا جونيور" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-royalGold text-emeraldDeep text-xs font-extrabold px-3.5 py-1.5 rounded-full">
+                            الأكثر طلباً • 55 م²
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-royalGold transition-colors">جناح جرانديفا جونيور</h3>
+                        <p class="text-white/70 text-sm mb-5 leading-relaxed">
+                            صالة جلوس مستقلة بتصميم أنيق، غرفة نوم رئيسية رحبة، وإطلالة مميزة على أفق مدينة أبها.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-white/60 mb-6 pb-5 border-b border-white/10">
+                            <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4 text-royalGold"></i> 3 نزلاء</span>
+                            <span class="flex items-center gap-1"><i data-lucide="sofa" class="w-4 h-4 text-royalGold"></i> صالة خاصة</span>
+                            <span class="flex items-center gap-1"><i data-lucide="coffee" class="w-4 h-4 text-royalGold"></i> آلة إسبريسو</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-extrabold text-royalGold">720</span>
+                                <span class="text-xs text-white/70">ر.س / ليلة</span>
+                            </div>
+                            <button onclick="selectRoomForBooking('جناح جرانديفا جونيور')" class="bg-royalGold hover:bg-royalGoldHover text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all cursor-pointer">
+                                احجز الجناح
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة 3: الجناح الملكي البانورامي -->
+                <div class="room-item bg-emeraldDeep rounded-3xl overflow-hidden border border-white/10 hover:border-royalGold/50 transition-all duration-500 group reveal delay-200" data-category="suite">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x600/0E1C19/C5A059?text=Royal+Suite'"
+                             alt="الجناح الملكي البانورامي" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-emeraldDark/85 backdrop-blur-md text-royalGold text-xs font-bold px-3.5 py-1.5 rounded-full border border-royalGold/30">
+                            فخامة ملكية • 95 م²
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-royalGold transition-colors">الجناح الملكي البانورامي</h3>
+                        <p class="text-white/70 text-sm mb-5 leading-relaxed">
+                            غرفتا نوم، مجلس استقبال فاخر، طاولة طعام، وجاكوزي خاص مع نوافذ بانورامية ساحرة.
+                        </p>
+                        <div class="flex items-center gap-4 text-xs text-white/60 mb-6 pb-5 border-b border-white/10">
+                            <span class="flex items-center gap-1"><i data-lucide="users" class="w-4 h-4 text-royalGold"></i> 4-5 نزلاء</span>
+                            <span class="flex items-center gap-1"><i data-lucide="bath" class="w-4 h-4 text-royalGold"></i> جاكوزي</span>
+                            <span class="flex items-center gap-1"><i data-lucide="crown" class="w-4 h-4 text-royalGold"></i> خدمة VIP</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-2xl font-extrabold text-royalGold">1,250</span>
+                                <span class="text-xs text-white/70">ر.س / ليلة</span>
+                            </div>
+                            <button onclick="selectRoomForBooking('الجناح الملكي البانورامي')" class="bg-royalGold hover:bg-royalGoldHover text-white text-sm font-bold px-5 py-2.5 rounded-xl transition-all cursor-pointer">
+                                احجز الجناح
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. قسم المطعم واللاونج (Dining & Lounge) -->
+    <section id="dining" class="py-20 md:py-28 px-6 md:px-12 lg:px-20 bg-warmIvory">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">تذوق أشهى النكهات</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-emeraldDark mb-4">مطعم جرانديفا ولاونج القهوة</h2>
+                <p class="text-textMuted">تجربة طهي استثنائية تجمع بين الأطباق العالمية الفاخرة والمأكولات السعودية الأصيلة في أجواء راقية.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- بطاقة المطعم الرئيسي -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col sm:flex-row reveal-right">
+                    <div class="sm:w-2/5 h-64 sm:h-auto overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/600x600/162925/C5A059?text=Grandiva+Restaurant'"
+                             alt="مطعم جرانديفا" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="sm:w-3/5 p-7 flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block bg-royalGold/15 text-royalGold text-xs font-bold px-3 py-1 rounded-full mb-3">بوفيه إفطار وعشاء فاخر</span>
+                            <h3 class="text-2xl font-extrabold text-emeraldDark mb-3">مطعم قمم جرانديفا</h3>
+                            <p class="text-sm text-textMuted leading-relaxed mb-4">
+                                استمتع ببوفيه إفطار صباحي غني بالمخبوزات الطازجة والأطباق المحلية، وقائمة عشاء منتقاة بعناية على يد أمهر الطهاة.
+                            </p>
+                        </div>
+                        <div class="text-xs font-bold text-emeraldDark flex items-center gap-2 pt-4 border-t border-gray-100">
+                            <i data-lucide="clock" class="w-4 h-4 text-royalGold"></i>
+                            <span>يومياً من 6:30 صباحاً حتى 11:30 مساءً</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة اللاونج والكافيه -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 flex flex-col sm:flex-row reveal-left">
+                    <div class="sm:w-2/5 h-64 sm:h-auto overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/600x600/162925/C5A059?text=Sky+Lounge'"
+                             alt="لاونج القهوة" 
+                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="sm:w-3/5 p-7 flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block bg-emeraldDark/10 text-emeraldDark text-xs font-bold px-3 py-1 rounded-full mb-3">قهوة مختصة وحلويات</span>
+                            <h3 class="text-2xl font-extrabold text-emeraldDark mb-3">لاونج الضباب</h3>
+                            <p class="text-sm text-textMuted leading-relaxed mb-4">
+                                جلسات هادئة ومريحة لتناول القهوة السعودية الأصيلة أو الإسبريسو المختص مع تشكيلة من الحلويات الفاخرة في أجواء أبها الساحرة.
+                            </p>
+                        </div>
+                        <div class="text-xs font-bold text-emeraldDark flex items-center gap-2 pt-4 border-t border-gray-100">
+                            <i data-lucide="clock" class="w-4 h-4 text-royalGold"></i>
+                            <span>مفتوح على مدار 24 ساعة للنزلاء والزوار</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. قسم المرافق والخدمات المتكاملة (Facilities & Spa) -->
+    <section id="facilities" class="py-20 bg-white px-6 md:px-12 lg:px-20 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">رفاهية بلا حدود</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-emeraldDark mb-4">مرافق وخدمات الفندق</h2>
+                <p class="text-textMuted">كل ما تحتاجه لإقامة مريحة ومنتجة تحت سقف واحد بأعلى معايير الجودة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- مرفق 1 -->
+                <div class="bg-warmIvory p-7 rounded-3xl border border-gray-100 hover:border-royalGold/50 hover:shadow-xl transition-all duration-300 group reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldDark text-royalGold flex items-center justify-center mb-6 group-hover:bg-royalGold group-hover:text-white transition-colors">
+                        <i data-lucide="dumbbell" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-emeraldDark mb-2">نادي رياضي متكامل</h3>
+                    <p class="text-sm text-textMuted leading-relaxed">أحدث الأجهزة الرياضية للياقة البدنية والكارديو متاحة مجاناً لنزلاء الفندق.</p>
+                </div>
+
+                <!-- مرفق 2 -->
+                <div class="bg-warmIvory p-7 rounded-3xl border border-gray-100 hover:border-royalGold/50 hover:shadow-xl transition-all duration-300 group reveal delay-100">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldDark text-royalGold flex items-center justify-center mb-6 group-hover:bg-royalGold group-hover:text-white transition-colors">
+                        <i data-lucide="sparkles" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-emeraldDark mb-2">نادي صحي وسبا</h3>
+                    <p class="text-sm text-textMuted leading-relaxed">جلسات مساج واسترخاء، ساونا، وحمام بخار لتجديد نشاطك بعد جولاتك السياحية.</p>
+                </div>
+
+                <!-- مرفق 3 -->
+                <div class="bg-warmIvory p-7 rounded-3xl border border-gray-100 hover:border-royalGold/50 hover:shadow-xl transition-all duration-300 group reveal delay-200">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldDark text-royalGold flex items-center justify-center mb-6 group-hover:bg-royalGold group-hover:text-white transition-colors">
+                        <i data-lucide="briefcase" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-emeraldDark mb-2">قاعات اجتماعات وأعمال</h3>
+                    <p class="text-sm text-textMuted leading-relaxed">قاعات مجهزة بأحدث تقنيات العرض والصوت لاستضافة اجتماعات الشركات والمناسبات.</p>
+                </div>
+
+                <!-- مرفق 4 -->
+                <div class="bg-warmIvory p-7 rounded-3xl border border-gray-100 hover:border-royalGold/50 hover:shadow-xl transition-all duration-300 group reveal delay-300">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldDark text-royalGold flex items-center justify-center mb-6 group-hover:bg-royalGold group-hover:text-white transition-colors">
+                        <i data-lucide="plane" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-lg font-extrabold text-emeraldDark mb-2">توصيل من وإلى المطار</h3>
+                    <p class="text-sm text-textMuted leading-relaxed">خدمة استقبال وتوديع بسيارات فاخرة من وإلى مطار أبها الدولي عند الطلب.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. قسم آراء وتقييمات النزلاء (Guest Reviews) -->
+    <section id="reviews" class="py-20 bg-warmIvory px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">تجارب حقيقية</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-emeraldDark mb-4">ماذا يقول ضيوفنا عن جرانديفا؟</h2>
+                <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-royalGold/20 mt-2">
+                    <div class="flex text-royalGold">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <span class="text-sm font-bold text-emeraldDark">تقييم 4.9 من 5 بناءً على آراء النزلاء</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- تقييم 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 reveal">
+                    <div class="flex text-royalGold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-textMuted text-sm leading-relaxed mb-6">
+                        "من أجمل الفنادق التي سكنتها في أبها، نظافة استثنائية، رائحة المكان تبعث على الراحة، وتعامل موظفي الاستقبال في قمة الرقي والاحترافية."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emeraldDark text-royalGold font-bold flex items-center justify-center">ع</div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">عبدالله القحطاني</h4>
+                            <span class="text-xs text-textMuted">إقامة عائلية • الرياض</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تقييم 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 reveal delay-100">
+                    <div class="flex text-royalGold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-textMuted text-sm leading-relaxed mb-6">
+                        "الأثاث جديد وفاخر جداً، الجناح التنفيذي واسع ومريح وموقعه قريب من كل الخدمات والمطاعم في أبها. بالتأكيد سأكرر الزيارة."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emeraldDark text-royalGold font-bold flex items-center justify-center">س</div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">سارة العتيبي</h4>
+                            <span class="text-xs text-textMuted">إقامة سياحية • جدة</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تقييم 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 reveal delay-200">
+                    <div class="flex text-royalGold mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-textMuted text-sm leading-relaxed mb-6">
+                        "هدوء تام وعزل ممتاز للصوت، بوفيه الإفطار متنوع ولذيذ جداً، والقهوة في اللاونج رائعة. يستحق 5 نجوم بكل جدارة."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emeraldDark text-royalGold font-bold flex items-center justify-center">م</div>
+                        <div>
+                            <h4 class="font-bold text-emeraldDark text-sm">محمد الدوسري</h4>
+                            <span class="text-xs text-textMuted">رحلة عمل • الخبر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. قسم الموقع والتواصل (Location & Contact) -->
+    <section id="contact" class="py-20 bg-emeraldDark text-white px-6 md:px-12 lg:px-20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- معلومات التواصل -->
+            <div class="lg:col-span-5 reveal-right">
+                <span class="text-royalGold font-bold text-sm tracking-wider uppercase block mb-2">نحن هنا لخدمتك</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-6">الموقع والتواصل المباشر</h2>
+                <p class="text-white/75 text-sm leading-relaxed mb-8">
+                    يسعد فريق الحجوزات وخدمة النزلاء بالإجابة على جميع استفساراتكم وتنسيق حجوزاتكم على مدار الساعة.
+                </p>
+
+                <div class="space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-white/10 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">العنوان</h4>
+                            <p class="text-white/70 text-sm mt-1">أبها، منطقة عسير، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-white/10 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">الهاتف الموحد والحجوزات</h4>
+                            <p class="text-white/70 text-sm mt-1" dir="ltr">+966 17 000 0000</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-11 h-11 rounded-xl bg-white/10 text-royalGold flex items-center justify-center shrink-0">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-white text-sm">البريد الإلكتروني</h4>
+                            <p class="text-white/70 text-sm mt-1">reservations@grandivahotelabha.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- خريطة تفاعلية / بطاقة موقع -->
+            <div class="lg:col-span-7 reveal-left">
+                <div class="bg-emeraldDeep rounded-3xl overflow-hidden border border-royalGold/30 shadow-2xl h-[360px] relative">
+                    <iframe 
+                        title="موقع فندق جرانديفا أبها"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d121319.86694542497!2d42.44123699642073!3d18.2163914084461!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e35461b0b6623d%3A0x8f01809e4425b8e3!2sAbha%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                        class="w-full h-full border-0 opacity-90 contrast-110" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل (Footer) -->
+    <footer class="bg-emeraldDeep text-white/70 py-12 px-6 md:px-12 lg:px-20 border-t border-white/10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg border border-royalGold flex items-center justify-center text-royalGold font-extrabold">G</div>
+                <span class="text-white font-bold">فندق جرانديفا أبها | Grandiva Hotel Abha</span>
+            </div>
+            <p class="text-xs text-center">
+                © 2026 جميع الحقوق محفوظة لفندق جرانديفا أبها. تصميم وتطوير بواجهة فاخرة.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" aria-label="انستغرام" class="w-9 h-9 rounded-full bg-white/5 hover:bg-royalGold hover:text-white flex items-center justify-center transition-colors">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                </a>
+                <a href="#" aria-label="تويتر" class="w-9 h-9 rounded-full bg-white/5 hover:bg-royalGold hover:text-white flex items-center justify-center transition-colors">
+                    <i data-lucide="twitter" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- زر واتساب عائم للحجز السريع -->
+    <a href="https://wa.me/966500000000?text=مرحباً%20فندق%20جرانديفا%20أبها،%20أرغب%20في%20الاستفسار%20عن%20حجز%20غرفة" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="تواصل عبر واتساب"
+       class="fixed bottom-6 left-6 z-40 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl whatsapp-pulse flex items-center gap-2 transition-transform hover:scale-105">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+        <span class="hidden sm:inline font-bold text-sm">احجز عبر واتساب</span>
+    </a>
+
+    <!-- نافذة تأكيد الحجز المخصصة (Modal بديل عن alert) -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-royalGold/30 transform transition-all">
+            <div class="w-16 h-16 rounded-full bg-emeraldDark text-royalGold flex items-center justify-center mx-auto mb-5">
+                <i data-lucide="check-circle-2" class="w-9 h-9"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold text-emeraldDark mb-2">تم استلام طلب التحقق!</h3>
+            <p id="modal-summary" class="text-sm text-textMuted leading-relaxed mb-6"></p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <a id="modal-whatsapp-link" href="#" target="_blank" class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 transition-colors">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>تأكيد فوري عبر واتساب</span>
+                </a>
+                <button onclick="closeModal()" class="flex-1 bg-warmIvory hover:bg-gray-200 text-emeraldDark font-bold py-3 px-4 rounded-xl text-sm transition-colors cursor-pointer">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // تفعيل أيقونات Lucide
+        lucide.createIcons();
+
+        // 1. ضبط تواريخ افتراضية في شريط الحجز (اليوم وغداً)
+        window.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            const formatDate = (date) => date.toISOString().split('T')[0];
+            document.getElementById('checkin-date').value = formatDate(today);
+            document.getElementById('checkout-date').value = formatDate(tomorrow);
+
+            // تفعيل مراقب الأنميشن عند التمرير (Intersection Observer)
+            initScrollAnimations();
+        });
+
+        // 2. نظام الأنميشن عند التمرير
+        function initScrollAnimations() {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: "0px 0px -40px 0px"
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // 3. قائمة الجوال
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // 4. فلترة الغرف والأجنحة
+        function filterRooms(category) {
+            const items = document.querySelectorAll('.room-item');
+            const buttons = document.querySelectorAll('.room-filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-royalGold', 'text-white');
+                btn.classList.add('text-white/75');
+            });
+            event.target.classList.add('bg-royalGold', 'text-white');
+            event.target.classList.remove('text-white/75');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => item.classList.add('active'), 50);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // 5. اختيار غرفة من البطاقة والتمرير لشريط الحجز
+        function selectRoomForBooking(roomName) {
+            const select = document.getElementById('room-type-select');
+            for (let i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === roomName) {
+                    select.selectedIndex = i;
+                    break;
+                }
+            }
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 6. معالجة نموذج الحجز وعرض نافذة التأكيد
+        document.getElementById('quick-booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const checkin = document.getElementById('checkin-date').value;
+            const checkout = document.getElementById('checkout-date').value;
+            const roomType = document.getElementById('room-type-select').value;
+            const guests = document.getElementById('guests-select').value;
+
+            const summaryText = `لقد اخترت (${roomType}) لـ (${guests})، من تاريخ ${checkin} إلى ${checkout}. الغرفة متاحة وجاهزة لتأكيد حجزك!`;
+            document.getElementById('modal-summary').textContent = summaryText;
+
+            const waMessage = encodeURIComponent(`مرحباً فندق جرانديفا أبها، أرغب بتأكيد حجز:\n- النوع: ${roomType}\n- النزلاء: ${guests}\n- الوصول: ${checkin}\n- المغادرة: ${checkout}`);
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/966500000000?text=${waMessage}`;
+
+            const modal = document.getElementById('booking-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
